@@ -13,8 +13,7 @@ btns.forEach(button => button.addEventListener("click", ()=> {
   getComputerChoice();
   result.textContent = "Computer choice: " + computer;
   result2.textContent = "Player choice: " + player;
-  points.textContent = checkWinner() + playerPoints + computerPoints;
-
+  points.textContent = checkWinner() + ' ' + 'Player: ' + playerPoints + ' ' + 'Computer: ' + computerPoints;
 }));
 
 function getComputerChoice() {
