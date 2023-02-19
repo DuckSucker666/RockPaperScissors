@@ -1,57 +1,48 @@
-let computerCount = 0;
-let playerCount = 0;
-while (computerCount < 5 && playerCount < 5) {
+const pool = ["ROCK", "PAPER", "SCISSORS"];
+let player; 
+let computer;
+const result = document.getElementById("choices");
+const result2 = document.getElementById("choices2");
+const btns = document.querySelectorAll(".btn");
+const points = document.querySelector(".score");
+let playerPoints = 0; 
+let computerPoints = 0;
 
-  let playerChoice = prompt("Your Turn").toUpperCase();
+btns.forEach(button => button.addEventListener("click", ()=> {
+  player = button.value;
+  getComputerChoice();
+  result.textContent = "Computer choice: " + computer;
+  result2.textContent = "Player choice: " + player;
+  points.textContent = checkWinner() + playerPoints + computerPoints;
 
-  let pool = ["ROCK", "PAPER", "SCISSORS"];
-  let getComputerChoice = pool[Math.floor(Math.random() * pool.length)];
+}));
 
-  let compare = function (player, computer) {
-    if (player === computer) {
-      return "tie";
-    }
-    if (player === "ROCK") {
-      if (computer === "SCISSORS") {
-        return "player";
-      } else {
-        return "computer";
-      }
-    }
-    if (player === "PAPER") {
-      if (computer === "ROCK") {
-        return "player";
-      } else {
-        if (computer === "SCISSORS") {
-          return "computer";
-        }
-      }
-    }
-    if (player === "SCISSORS") {
-      if (computer === "ROCK") {
-        return "computer";
-      } else {
-        if (computer === "PAPER") {
-          return "player";
-        }
-      }
-    }
-  };
-  let winner = compare(playerChoice, getComputerChoice);
-  if (winner === "player") {
-    playerCount++;
-  } else if (winner === "computer") {
-    computerCount++;
+function getComputerChoice() {
+  computer = pool[Math.floor(Math.random() * pool.length)];
+  return computer;
+}
+
+function checkWinner(){
+  if(player === computer){
+    return "Draw!"
+  } else if (player == "ROCK" && computer == "PAPER"){
+    computerPoints++;
+    return "You Lose!";
+  } else if (player == "ROCK" && computer == "SCISSORS"){
+    playerPoints++;
+    return "You win!";
+  } else if (player == "PAPER" && computer == "ROCK"){
+    playerPoints++;
+    return "You Win!";
+  } else if (player == "PAPER" && computer == "SCISSORS"){
+    computerPoints++;
+    return "You Lose!";
+  } else if (player == "SCISSORS" && computer == "PAPER"){
+    playerPoints++;
+    return "You win!";
+  } else if (player == "SCISSORS" && computer == "ROCK"){
+    computerPoints++;
+    return "You Lose!";
   }
-  console.log("User Choice: " + playerChoice);
-  console.log("Computer Choice: " + getComputerChoice);
-  console.log("User Score: " + playerCount);
-  console.log("Computer Score: " + computerCount);
-  console.log("====================================================");
-};
+}
 
-if (playerCount === 5) {
-  console.log("Player Wins!");
-} else if (computerCount === 5) {
-  console.log("Computer Wins!");
-};

@@ -1,0 +1,49 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.container{
+  background-color: rgb(22, 20, 43);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+h1{
+  color: rgb(255, 0, 0);
+  font-size: 50px;
+}
+h3{
+  color: rgb(0, 255, 149);
+}
+p{
+  color: yellow;
+  padding: 30px;
+  font-size: 25px;
+}
+img{
+  height: 200px;
+}
+.btns{
+  margin: auto;
+}
+.results{
+  margin: auto;
+}
+.title{
+  margin-top: 20px;
+}
+.subtitle{
+  margin-top: 50px;
+}
+img{
+  border-radius: 50%;
+}
+button{
+  background-color: transparent;
+  border-color: transparent;
+}
+.btn{
+  border-radius: 50%;
+  border-color: rgb(0, 210, 238);
+}
